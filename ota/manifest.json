@@ -1,1 +1,5 @@
-
+{
+  "version": "7.0.0",
+  "url": "https://github.com/okeeffm/esp32-ticker-releases/releases/download/v7.0.0/firmware.bin",
+  "notes": "Multi-AP Wi-Fi, Wi-Fi signal strength indicator, boot splash screen"
+}
