@@ -189,7 +189,7 @@ All storage is **power-loss tolerant** — NVS and LittleFS are both designed to
 
 ## Roadmap
 
-v9.0.7 is the current final version — there is no committed next version. Portfolio mode (quantity held per symbol, total portfolio value) was considered for a future v10 but has been shelved rather than built speculatively; it may be revisited if users ask for it.
+v9.0.7 is the current final version.  Furture releases will include Portfolio Management, Currecy Converter, Headline News, Earnings Calendar, Fear & Greed (crypto).
 
 ---
 
