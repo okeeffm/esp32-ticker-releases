@@ -86,59 +86,10 @@ Without this mod the firmware still works — set `TOUCH_INT_PIN` to `GPIO_NUM_N
 
 ### Prerequisites
 
-- [PlatformIO](https://platformio.org/) (VS Code extension recommended)
-- A Sunton ESP32-8048S070C board
 - Wi-Fi network (2.4GHz — the ESP32-S3 does not support 5GHz)
 - Free API keys: [Twelve Data](https://twelvedata.com/pricing) and optionally [CoinGecko Demo](https://www.coingecko.com/en/api)
 
-### Build and flash
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/okeeffm/esp32-ticker-7in.git
-   cd esp32-ticker-7in
-   ```
-
-2. Copy the secrets template and fill in your credentials:
-   ```bash
-   cp secrets.h.example secrets.h
-   ```
-   `secrets.h` only needs the NTP server pool — Wi-Fi credentials and
-   timezone are both configured entirely on-device (see below), never
-   hardcoded:
-   ```cpp
-   #define NTP_SERVER_PRIMARY   "pool.ntp.org"
-   #define NTP_SERVER_SECONDARY "time.google.com"
-   ```
-   Twelve Data and CoinGecko API keys are **not** set at compile time —
-   as of v6.1.0 there's no compile-time key fallback at all (a baked-in
-   key would be shared across every unit you flash this to). Enter your
-   own Twelve Data key on first boot via Settings > API & Rate Limits;
-   the CoinGecko Demo key there is optional.
-
-3. Upload the LittleFS filesystem image (needed once, for the boot splash screen at `data/splash.bin` — see note below):
-   ```bash
-   pio run --target uploadfs
-   ```
-
-4. Build and flash the firmware:
-   ```bash
-   pio run --target upload
-   pio device monitor --baud 115200
-   ```
-
-5. On first boot, the device will prompt for Wi-Fi credentials on-screen. Scan for your network, tap it, and enter the password using the on-screen keyboard. Set your timezone afterward in Settings > Wi-Fi (defaults to UTC until then).
-
-> **Note:** `pio run --target uploadfs` reformats the *entire* LittleFS
-> partition from the local `data/` folder — it isn't a partial/merge
-> upload. Since your watchlist/FX pairs/local currency (`/config.json`)
-> live on that same partition but aren't part of `data/`, running this
-> on an already-configured device resets them to first-boot defaults.
-> Run it once early (e.g. right after `pio run --target erase`, before
-> configuring anything), or expect to re-add your symbols afterward.
-> Ordinary `pio run --target upload` firmware flashes never touch this
-> partition, so this only needs repeating if `data/splash.bin` itself
-> changes.
+On first boot, the device will prompt for Wi-Fi credentials on-screen. Scan for your network, tap it, and enter the password using the on-screen keyboard. Set your timezone afterward in Settings > Wi-Fi (defaults to UTC until then).
 
 ### First-time Wi-Fi setup
 
@@ -239,42 +190,6 @@ All storage is **power-loss tolerant** — NVS and LittleFS are both designed to
 ## Roadmap
 
 v9.0.7 is the current final version — there is no committed next version. Portfolio mode (quantity held per symbol, total portfolio value) was considered for a future v10 but has been shelved rather than built speculatively; it may be revisited if users ask for it.
-
----
-
-## Project structure
-
-```
-├── src/                            (.cpp — headers of the same name live in include/)
-│   ├── main.cpp
-│   ├── display_setup.cpp           — LovyanGFX + LVGL driver, RGB pin mapping
-│   ├── ntp_sync.cpp                — SNTP client
-│   ├── tz_list.cpp                 — Curated timezone list + DST-aware POSIX strings
-│   ├── net_status.cpp              — Internet-reachability check (separate from Wi-Fi status)
-│   ├── wifi_provision.cpp          — On-device Wi-Fi scan/connect + NVS credential storage
-│   ├── config_storage.cpp          — NVS scalar settings + LittleFS config.json read/write
-│   ├── price_fetcher.cpp           — Crypto/equity fetch (CoinGecko, Twelve Data, Yahoo), core-1 task
-│   ├── fx_fetcher.cpp              — Frankfurter FX rates, same core-1 task
-│   ├── symbol_search.cpp           — Add Symbol search (Twelve Data / CoinGecko lookup)
-│   ├── ui_grid_screen.h / .cpp     — Main watchlist grid, detail screen, FX detail screen
-│   ├── ui_candle_widget.cpp        — Custom LVGL candlestick draw widget (+ SMA overlay)
-│   ├── ui_rsi_widget.cpp           — Custom LVGL RSI panel draw widget
-│   ├── ui_fx_screen.cpp            — FX rate table screen
-│   ├── ui_settings_screen.cpp      — Tabbed settings screen
-│   └── ota_updater.cpp             — GitHub Releases OTA check/install, background daily check
-├── include/
-│   ├── lv_conf.h                   — LVGL configuration
-│   ├── firmware_version.h          — FIRMWARE_VERSION string
-│   ├── secrets.h                   — NTP server pool (gitignored; no credentials — see below)
-│   └── secrets.h.example           — Template for the above (tracked)
-├── partitions.csv                  — OTA-ready dual-slot partition table
-├── data/                           — LittleFS content, flashed via `pio run --target uploadfs`
-│   └── splash.bin                  — Boot splash, raw headerless RGB565 (800×480), not compiled in
-├── ota/
-│   └── manifest.json               — OTA update manifest (updated each release)
-├── platformio.ini
-└── CLAUDE.md                       — Full project context for AI-assisted development
-```
 
 ---
 
