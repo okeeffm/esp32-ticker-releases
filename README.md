@@ -1,6 +1,6 @@
 # ESP32 Stock & Crypto Ticker
 
-A live stock, cryptocurrency, and foreign exchange ticker for the **Sunton ESP32-8048S070C** 7" touchscreen display. Built with LVGL 9, LovyanGFX, FreeRTOS, and a suite of free-tier data APIs.
+A live stock, cryptocurrency, and foreign exchange ticker for the 7" touchscreen display. Built with LVGL 9, LovyanGFX, FreeRTOS, and a suite of free-tier data APIs.
 
 ![Version](https://img.shields.io/badge/version-v9.0.7-blue)
 ![Platform](https://img.shields.io/badge/platform-ESP32--S3-green)
