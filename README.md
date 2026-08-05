@@ -151,6 +151,7 @@ scrollable sections:
 | Watchlist | Add/remove symbols, select data source (Twelve Data or Yahoo Finance) per equity |
 | FX Pairs | Remove pairs, toggle pin-to-watchlist per pair |
 | Display | Brightness, chart style, page rotate interval, MA period, RSI period, RSI default visibility |
+| Alerts | High / Low threshold alerting |
 | API & Rate Limits | Twelve Data key, daily budget, per-minute limit, CoinGecko Demo key |
 | Wi-Fi | Saved networks list (up to 5, add/forget), timezone (~35 curated zones, DST toggle) |
 
