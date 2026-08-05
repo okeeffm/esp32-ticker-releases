@@ -189,7 +189,7 @@ All storage is **power-loss tolerant** — NVS and LittleFS are both designed to
 
 ## Roadmap
 
-v9.0.7 is the current final version.  Furture releases will include Portfolio Management, Currecy Converter, Headline News, Earnings Calendar, Fear & Greed (crypto).
+v9.0.7 is the current final version.  Furture releases will include Portfolio Management, Currency Converter, Headline News, Earnings Calendar, Fear & Greed (crypto).
 
 ---
 
