@@ -1,6 +1,6 @@
 # Ideas Universe Asset Tracker
 
-**Live stock, crypto and currency prices on a 7-inch desk display.** Price alerts, portfolio tracking, world clocks, screensavers and an optional Bitcoin miner, all running on a Sunton ESP32-8048S070C.
+**Live stock, crypto and currency prices on a 7-inch desk display.** Price alerts, portfolio tracking, world clocks, screensavers and an optional Bitcoin miner, all running on a ESP32-S3 7" capacitive Touchscreen.
 
 ![Version](https://img.shields.io/badge/firmware-v14.0.1-blue)
 ![Platform](https://img.shields.io/badge/platform-ESP32--S3-green)
@@ -869,7 +869,7 @@ Network statistics are fetched from sources reachable over **IPv4**, because the
 
 | Item | Value |
 | --- | --- |
-| Board | Sunton ESP32-8048S070C |
+| Board | ESP32-S3 |
 | Processor | ESP32-S3, dual-core, 240 MHz |
 | Memory | 16 MB flash, 8 MB PSRAM |
 | Display | 7-inch, 800 x 480, RGB-parallel TN panel |
