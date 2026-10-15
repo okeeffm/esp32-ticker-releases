@@ -7,11 +7,6 @@
 
 This repository publishes **release builds** (firmware and update manifest) for the Asset Tracker. The full user manual follows.
 
-## Getting the firmware
-
-- **Already running a unit?** Open **Settings > About > Check for Updates** on the device. New versions are also detected automatically in the background and shown as a teal download arrow in the status bar. Installing is always started by you.
-- **Download manually:** see the [Releases](https://github.com/okeeffm/esp32-ticker-releases/releases) page for `firmware.bin` and `manifest.json`.
-
 ## Contents
 
 - [Part One: Overview and Setup](#part-one-overview-and-setup)
