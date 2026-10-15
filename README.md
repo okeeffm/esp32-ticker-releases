@@ -49,7 +49,7 @@ Beyond a plain price board it has grown into a small information appliance:
 
 | Item | Notes |
 | --- | --- |
-| The Asset Tracker unit | Sunton ESP32-8048S070C board with its 7-inch touchscreen, normally supplied in a case. |
+| The Asset Tracker unit | ESP32-S3 board with its 7-inch touchscreen. |
 | A power supply | A good-quality **5 V USB adapter** plugged directly into a wall socket. See the power warning below. |
 | A Wi-Fi network | **2.4 GHz only.** The device cannot connect to 5 GHz-only networks. Most routers broadcast both; if yours uses a single combined name, that is fine. |
 | Internet access | The device talks directly to public data services. No inbound ports, port-forwarding or special router settings are needed. |
